@@ -13,12 +13,13 @@ Instruções básicas de como fazer a implementação estão no arquivo algoritm
 
 if __name__ == "__main__":
 
-    algoritimoDeOrdenacao = QuickSort()
-    #algoritimoDeOrdenacao = MergeSort()
+    #algoritimoDeOrdenacao = QuickSort()
+    algoritimoDeOrdenacao = MergeSort()
     #algoritimoDeOrdenacao = InsertionSort()
     #algoritimoDeOrdenacao = QuickSortInsertionP()
+    algoritimoDeOrdenacao = MergeSortInsertP()
 
-    arquivoJson = '../grafos/100vertices.json'
+    arquivoJson = '../grafos/7vertices.json'
     arquivoDeSaida = '../arvores_geradas/Resultado.txt'
 
     grafo = Grafo()

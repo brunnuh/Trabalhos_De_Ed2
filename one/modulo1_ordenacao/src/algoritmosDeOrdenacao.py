@@ -143,7 +143,41 @@ class QuickSortInsertionP(object):
         colecao[m]['weight'] = temp
 
 
+class MergeSortInsertP(object):
 
+    def ordenar(self, colecao, inicio, fim, L):#v, p, r
+        FoipraIns = False
+        if(inicio < fim):
+            if(L >= fim):
+                FoipraIns = True
+                colecao = InsertionSort.ordenar(self,colecao, inicio, fim)
+
+            posMeio = (inicio + fim) // 2  # posicao do elemento do meio
+            self.ordenar(colecao, inicio, posMeio, L) #dividindo a colecao pela esquerda
+            #self.ordenar(colecao, posMeio + 1, fim) #dividindo a colecao pela direita
+            self.Intercalar(colecao, inicio, posMeio, fim, l)
+        return colecao
+
+    def Intercalar(self, colecao, inicio, Meio, fim):#v, p, q, r
+        colecaoCopia = deepcopy(colecao)
+        contEsq = inicio #contador da colecao esquerda # i
+        contDir = Meio + 1 #contador da colecao direita # j
+        contCopia = inicio #contador da copia #k
+
+        while(contCopia <= fim):
+            if(contEsq > Meio):
+                colecao[contCopia]['weight'] = colecaoCopia[contDir]['weight']
+                contDir += 1
+            elif(contDir > fim):
+                colecao[contCopia]['weight'] = colecaoCopia[contEsq]['weight']
+                contEsq += 1
+            elif(int(colecaoCopia[contEsq]['weight']) < int(colecaoCopia[contDir]['weight'])):
+                colecao[contCopia]['weight'] = colecaoCopia[contEsq]['weight']
+                contEsq += 1
+            else:
+                colecao[contCopia]['weight'] = colecaoCopia[contDir]['weight']
+                contDir += 1
+            contCopia += 1
 
 
 
