@@ -17,7 +17,7 @@ if __name__ == "__main__":
     #algoritimoDeOrdenacao = MergeSort()
     #algoritimoDeOrdenacao = InsertionSort()
     algoritimoDeOrdenacao = QuickSortInsertionP()
-
+    algoritimoDeOrdenacao = MergeSortInsertP()
     arquivoJson = '../grafos/7vertices.json'
     arquivoDeSaida = '../arvores_geradas/Resultado.txt'
 
