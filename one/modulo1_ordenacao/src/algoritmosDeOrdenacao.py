@@ -1,5 +1,6 @@
 import time
 from copy import deepcopy
+
 '''
 
 
@@ -35,9 +36,9 @@ class QuickSort(object):
 
         if (inicio < tamanho):
             pos = self.particionar(colecao, inicio, tamanho)
-            ordenar = (colecao, inicio, pos - 1)
-            ordenar = (colecao, pos + 1, tamanho)
-            return colecao
+            self.ordenar = (colecao, inicio, pos-1)
+            self.ordenar = (colecao, pos + 1, tamanho)
+        return colecao
 
     def particionar(self, colecao, inicio, fim):
 
@@ -45,7 +46,7 @@ class QuickSort(object):
         destPivo = inicio
         andarColecao = inicio + 1
 
-        while (andarColecao < fim):
+        while (andarColecao <= fim):
             if (int(colecao[andarColecao]['weight']) < int(pivoEsq)):
                 destPivo += 1
                 self.trocar(colecao, destPivo, andarColecao)
@@ -58,30 +59,31 @@ class QuickSort(object):
         colecao[n]['weight'] = colecao[m]['weight']
         colecao[m]['weight'] = temp
 
+
 class MergeSort(object):
 
-    def ordenar(self, colecao, inicio, fim):#v, p, r
-        if(inicio < fim):
-            posMeio = (inicio+fim) // 2 #posicao do elemento do meio
-            self.ordenar(colecao, inicio, posMeio) #dividindo a colecao pela esquerda
-            self.ordenar(colecao, posMeio + 1, fim) #dividindo a colecao pela direita
+    def ordenar(self, colecao, inicio, fim):  # v, p, r
+        if (inicio < fim):
+            posMeio = (inicio + fim) // 2  # posicao do elemento do meio
+            self.ordenar(colecao, inicio, posMeio)  # dividindo a colecao pela esquerda
+            self.ordenar(colecao, posMeio + 1, fim)  # dividindo a colecao pela direita
             self.Intercalar(colecao, inicio, posMeio, fim)
         return colecao
 
-    def Intercalar(self, colecao, inicio, Meio, fim):#v, p, q, r
+    def Intercalar(self, colecao, inicio, Meio, fim):  # v, p, q, r
         colecaoCopia = deepcopy(colecao)
-        contEsq = inicio #contador da colecao esquerda # i
-        contDir = Meio + 1 #contador da colecao direita # j
-        contCopia = inicio #contador da copia #k
+        contEsq = inicio  # contador da colecao esquerda # i
+        contDir = Meio + 1  # contador da colecao direita # j
+        contCopia = inicio  # contador da copia #k
 
-        while(contCopia <= fim):
-            if(contEsq > Meio):
+        while (contCopia <= fim):
+            if (contEsq > Meio):
                 colecao[contCopia]['weight'] = colecaoCopia[contDir]['weight']
                 contDir += 1
-            elif(contDir > fim):
+            elif (contDir > fim):
                 colecao[contCopia]['weight'] = colecaoCopia[contEsq]['weight']
                 contEsq += 1
-            elif(int(colecaoCopia[contEsq]['weight']) < int(colecaoCopia[contDir]['weight'])):
+            elif (int(colecaoCopia[contEsq]['weight']) < int(colecaoCopia[contDir]['weight'])):
                 colecao[contCopia]['weight'] = colecaoCopia[contEsq]['weight']
                 contEsq += 1
             else:
@@ -90,30 +92,32 @@ class MergeSort(object):
             contCopia += 1
 
 
-class InsertionSort(object): # complexidade n^2 exponencial
+class InsertionSort(object):  # complexidade n^2 exponencial
     def ordenar(self, colecao, inicio, fim):
-        cont = inicio + 1 #contador principal, comeca pelo 2 item i
-        while(cont < fim):
-            temp = colecao[cont]['weight'] # variavel com valor atual
-            contAnt = cont - 1 # contador sempre atras do contador principal j
+        cont = inicio + 1  # contador principal, comeca pelo 2 item i
+        while (cont < fim):
+            temp = colecao[cont]['weight']  # variavel com valor atual
+            contAnt = cont - 1  # contador sempre atras do contador principal j
             trocou = False
-            while(contAnt >= 0 and int(colecao[contAnt]['weight']) > int(temp)):
+            while (contAnt >= inicio and int(colecao[contAnt]['weight']) > int(
+                    temp)):  # troquei o contAnt >= 0 por contAnt >= inicio pra ser usado pelos outros metodos
                 colecao[contAnt + 1]['weight'] = colecao[contAnt]['weight']
                 trocou = True
                 contAnt -= 1
-            if(trocou == True):
+            if (trocou == True):
                 colecao[contAnt + 1]['weight'] = temp
             cont += 1
         return colecao
 
+
 class QuickSortInsertionP(object):
 
     def ordenar(self, colecao, inicio, tamanho, L):
-        if(tamanho  == len(colecao)-1):
+        if (tamanho == len(colecao) - 1):
             pos = 0
         if (inicio < tamanho):
-            if(L != 0):
-                pos, L = self.particionar(colecao, inicio, tamanho, L) #escolher o pivo e trocar
+            if (L != 0):
+                pos, L = self.particionar(colecao, inicio, tamanho, L)  # escolher o pivo e trocar
                 ordenar = (colecao, inicio, pos - 1)
                 ordenar = (colecao, pos + 1, tamanho)
             else:
@@ -139,27 +143,30 @@ class QuickSortInsertionP(object):
         colecao[n]['weight'] = colecao[m]['weight']
         colecao[m]['weight'] = temp
 
+
 class MergeSortInsertP(object):
 
     def __init__(self):
-        self.foiPraIns = False  # atributo de classe
+        self.limiteL = False  # atributo de classe
+        self.Esq = False
+        self.Dir = False
         self.posMeio = 0
 
     def ordenar(self, colecao, inicio, fim, L):  # metodo
-
         if (inicio < fim):
-            if (L >= fim):
-                self.foiPraIns = True
-                colecao = InsertionSort.ordenar(self, colecao, inicio, fim) #esta indo na posicao certa
-                colecao = InsertionSort.ordenar(self, colecao, self.posMeio, fim+fim) #possivel erro no ordenamento da direita, ps: tem que ir do fim + 1 da colecao esquerda ate o doblo do fim da esquerda, depois que terminar, retorna colecao pra continuar com merg normalmente
-            self.posMeio = (inicio + fim) // 2
-            if (self.foiPraIns != True):
-                self.ordenar(colecao, inicio, self.posMeio, L)  # dividindo a colecao pela esquerda
-                # self.ordenar(colecao, self.posMeio + 1, fim) #dividindo a colecao pela direita
-            elif (self.foiPraIns == True):
-                pass
-            self.Intercalar(colecao, inicio, self.posMeio, fim)
+            if ((fim - inicio) > L):
+                self.posMeio = (inicio + fim) // 2  # posicao do elemento do me
+                self.ordenar(colecao, inicio, self.posMeio, L)
+                self.ordenar(colecao, self.posMeio + 1, fim, L)
+                InsertionSort.ordenar(self, colecao, inicio, fim)
+                return colecao
+            elif((fim - inicio) <= L):
+                self.posMeio = (inicio + fim) // 2  # quando ele nao entra no if, ele nao encontra a ultima metada, por isso tem essa
+                self.Intercalar(colecao, inicio, self.posMeio, fim)
+                self.posMeio += self.posMeio  # antes de devolver, modificando pra ultima metade
+
         return colecao
+
 
     def Intercalar(self, colecao, inicio, Meio, fim):  # v, p, q, r
         colecaoCopia = deepcopy(colecao)
@@ -181,33 +188,3 @@ class MergeSortInsertP(object):
                 colecao[contCopia]['weight'] = colecaoCopia[contDir]['weight']
                 contDir += 1
             contCopia += 1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

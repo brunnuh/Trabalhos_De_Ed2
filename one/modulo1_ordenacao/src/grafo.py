@@ -49,7 +49,7 @@ class Grafo(object):
 
         # Ordencão das arestas iniciada
 
-        arestasOrdenadas = self.algoritimoDeOrdenacao.ordenar( copy.copy(self.arestas), 0, (len(self.arestas)-1), 2)
+        arestasOrdenadas = self.algoritimoDeOrdenacao.ordenar( copy.copy(self.arestas), 0, (len(self.arestas)-1))
         # Ordencão das arestas finalizada
         
         pop = 0
