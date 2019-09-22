@@ -13,15 +13,15 @@ Instruções básicas de como fazer a implementação estão no arquivo algoritm
 
 if __name__ == "__main__":
 
-    algoritimoDeOrdenacao = QuickSort()
+    #algoritimoDeOrdenacao = QuickSort()
 
-    #algoritimoDeOrdenacao = MergeSort()
+    algoritimoDeOrdenacao = MergeSort()
     #algoritimoDeOrdenacao = InsertionSort()  0.014
     #algoritimoDeOrdenacao = QuickSortInsertionP() 0.004
     #algoritimoDeOrdenacao = MergeSortInsertP()
 
 
-    arquivoJson = '../grafos/7vertices.json'
+    arquivoJson = '../grafos/10000vertices.json'
     arquivoDeSaida = '../arvores_geradas/Resultado.txt'
 
     grafo = Grafo()
@@ -32,7 +32,7 @@ if __name__ == "__main__":
     arvoreGeradoraMinima = grafo.executarKruskal()
 
     depois = time.time()
-    tempo = (depois - antes)
+    tempo = (depois - antes) * 1000
     SalvarArvoreGeradoraMinimaEmArquivo(arquivoDeSaida, arvoreGeradoraMinima)
 
 
@@ -44,5 +44,5 @@ if __name__ == "__main__":
     else:
         print('O tempo de execucao do algoritmo InsertSort ', end=' ')
 
-    print(f'foi de {tempo:.3f} Segundos.ms do algoritmo ')
+    print(f'foi de {tempo:.5f} ms do algoritmo ')
 

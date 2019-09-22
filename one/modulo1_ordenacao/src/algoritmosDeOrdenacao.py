@@ -147,24 +147,27 @@ class QuickSortInsertionP(object):
 class MergeSortInsertP(object):
 
     def __init__(self):
-        self.limiteL = False  # atributo de classe
-        self.Esq = False
-        self.Dir = False
         self.posMeio = 0
-
+        self.posposMeio = 0
     def ordenar(self, colecao, inicio, fim, L):  # metodo
         if (inicio < fim):
-            if ((fim - inicio) > L):
+            if ((fim - inicio) > L): # fim - inicio é o tamanho da colecao atual
                 self.posMeio = (inicio + fim) // 2  # posicao do elemento do me
                 self.ordenar(colecao, inicio, self.posMeio, L)
                 self.ordenar(colecao, self.posMeio + 1, fim, L)
-                InsertionSort.ordenar(self, colecao, inicio, fim)
-                return colecao
-            elif((fim - inicio) <= L):
+                if(inicio == 0 and fim == len(colecao)-1):
+                    InsertionSort.ordenar(self,colecao,inicio,fim)
+                    self.posMeio = len(colecao)//2
+                elif(inicio == 0 and fim == len(colecao) - 1):
+                    return colecao
+                else:
+                    self.Intercalar(colecao, inicio, self.posMeio, fim)
+                    return colecao
+            if((fim - inicio) <= L):
+                self.posposMeio = self.posMeio
                 self.posMeio = (inicio + fim) // 2  # quando ele nao entra no if, ele nao encontra a ultima metada, por isso tem essa
                 self.Intercalar(colecao, inicio, self.posMeio, fim)
-                self.posMeio += self.posMeio  # antes de devolver, modificando pra ultima metade
-
+                self.posMeio = self.posposMeio  # antes de devolver, modificando pra ultima metade
         return colecao
 
 
