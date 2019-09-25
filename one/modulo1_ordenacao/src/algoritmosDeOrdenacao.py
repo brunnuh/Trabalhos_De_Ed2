@@ -191,3 +191,31 @@ class MergeSortInsertP(object):
                 colecao[contCopia]['weight'] = colecaoCopia[contDir]['weight']
                 contDir += 1
             contCopia += 1
+
+class HeapSort(object):
+
+
+    def ordenar(self, colecao, tamanho): #heapsort
+        self.buildMax(colecao, tamanho)
+        for i in range(tamanho,1):
+            colecao[1]['weight'], colecao[i]['weight'] = colecao[i]['weight'], colecao[1]['weight']
+            self.maxHeap(colecao,1, i - 1)
+
+    def buildMax(self, colecao, tamanho):
+        for i in range(tamanho//2, 1):
+            self.maxHeap(colecao, i, tamanho)
+
+    def maxHeap(self, colecao, i, tamanho):
+        left = 2*i + 1
+        right = 2*i + 2
+        if((left <= tamanho) and (colecao[left]['weight']  > colecao[i]['weight'])):
+            max = left
+        else:
+            max = i
+
+        if((right <= tamanho) and (colecao[right]['weight']  > colecao[max]['weight'])):
+            max = right
+
+        if(max != i):
+            colecao[i]['weight'], colecao[max]['weight'] = colecao[max]['weight'], colecao[i]['weight'] #possivel erro
+            self.maxHeap(colecao, max, tamanho)

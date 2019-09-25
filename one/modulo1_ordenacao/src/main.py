@@ -1,7 +1,7 @@
 from grafo import Grafo
 from algoritmosDeOrdenacao import *
 from utils import *
-import time
+import timeit
 
 
 
@@ -13,26 +13,28 @@ Instruções básicas de como fazer a implementação estão no arquivo algoritm
 
 if __name__ == "__main__":
 
-    #algoritimoDeOrdenacao = QuickSort()
+    #algoritmoDeOrdenacao = QuickSort()
 
-    algoritimoDeOrdenacao = MergeSort()
-    #algoritimoDeOrdenacao = InsertionSort()  0.014
-    #algoritimoDeOrdenacao = QuickSortInsertionP() 0.004
-    #algoritimoDeOrdenacao = MergeSortInsertP()
+    #algoritmoDeOrdenacao = MergeSort()
+    #algoritmoDeOrdenacao = InsertionSort()
+    #algoritmoDeOrdenacao = QuickSortInsertionP() 0.004
+    #algoritmoDeOrdenacao = MergeSortInsertP()
+    algoritmoDeOrdenacao = HeapSort()
 
-
-    arquivoJson = '../grafos/10000vertices.json'
+    arquivoJson = '../grafos/1000vertices.json'
     arquivoDeSaida = '../arvores_geradas/Resultado.txt'
 
     grafo = Grafo()
-    antes = time.time()
 
-    grafo.estabelecerAlgoritmoDeOrdencao(algoritimoDeOrdenacao)
+
+    grafo.estabelecerAlgoritmoDeOrdencao(algoritmoDeOrdenacao)
     grafo.carregarGrafo(arquivoJson)
-    arvoreGeradoraMinima = grafo.executarKruskal()
 
-    depois = time.time()
-    tempo = (depois - antes) * 1000
+    antes = timeit.default_timer()
+    arvoreGeradoraMinima = grafo.executarKruskal()
+    depois = timeit.default_timer()
+    tempo = (depois-antes)
+
     SalvarArvoreGeradoraMinimaEmArquivo(arquivoDeSaida, arvoreGeradoraMinima)
 
 
@@ -44,5 +46,5 @@ if __name__ == "__main__":
     else:
         print('O tempo de execucao do algoritmo InsertSort ', end=' ')
 
-    print(f'foi de {tempo:.5f} ms do algoritmo ')
+    print(f'foi de {tempo:.4f} SEGUNDOS do algoritmo ')
 
