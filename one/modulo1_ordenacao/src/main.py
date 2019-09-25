@@ -39,9 +39,9 @@ if __name__ == "__main__":
 
 
 
-    if('QuickSort' in str(algoritimoDeOrdenacao)[23:36]):
+    if('QuickSort' in str(algoritmoDeOrdenacao)[23:36]):
         print('O tempo de execucao do algoritmo QuickSort', end=' ')
-    elif('MergeSort' in str(algoritimoDeOrdenacao)[23:36]):
+    elif('MergeSort' in str(algoritmoDeOrdenacao)[23:36]):
         print('O tempo de execucao do algoritmo MergeSort', end=' ')
     else:
         print('O tempo de execucao do algoritmo InsertSort ', end=' ')

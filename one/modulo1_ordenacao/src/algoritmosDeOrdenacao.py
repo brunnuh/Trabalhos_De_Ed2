@@ -195,27 +195,28 @@ class MergeSortInsertP(object):
 class HeapSort(object):
 
 
-    def ordenar(self, colecao, tamanho): #heapsort
-        self.buildMax(colecao, tamanho)
-        for i in range(tamanho,1):
-            colecao[1]['weight'], colecao[i]['weight'] = colecao[i]['weight'], colecao[1]['weight']
-            self.maxHeap(colecao,1, i - 1)
+    def ordenar(self, colecao, n): #heapsort
+        self.buildMax(colecao, n)
+        for i in range(n, 0, -1):
+            colecao[0]['weight'], colecao[i]['weight'] = colecao[i]['weight'], colecao[0]['weight']
+            self.maxHeap(colecao,0, i - 1)
+        return colecao
 
     def buildMax(self, colecao, tamanho):
-        for i in range(tamanho//2, 1):
+        for i in range(int(tamanho/2), 0, -1):
             self.maxHeap(colecao, i, tamanho)
 
-    def maxHeap(self, colecao, i, tamanho):
-        left = 2*i + 1
-        right = 2*i + 2
-        if((left <= tamanho) and (colecao[left]['weight']  > colecao[i]['weight'])):
+    def maxHeap(self, colecao, i, tamanho):  # vai deixar o maior no topo
+        left = (2*i) + 1
+        right = (2*i) + 2
+        if((left <= tamanho) and (int(colecao[left]['weight'])  > int(colecao[i]['weight']))):
             max = left
         else:
             max = i
 
-        if((right <= tamanho) and (colecao[right]['weight']  > colecao[max]['weight'])):
+        if((right <= tamanho) and (int(colecao[right]['weight'])  > int(colecao[max]['weight']))):
             max = right
 
         if(max != i):
-            colecao[i]['weight'], colecao[max]['weight'] = colecao[max]['weight'], colecao[i]['weight'] #possivel erro
+            colecao[max]['weight'], colecao[i]['weight'] = colecao[i]['weight'], colecao[max]['weight'] #possivel erro
             self.maxHeap(colecao, max, tamanho)
