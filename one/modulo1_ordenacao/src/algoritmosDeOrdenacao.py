@@ -33,31 +33,37 @@ int(colecao[i]['weight']) < int(colecao[j]['weight'])
 
 class QuickSort(object):
     def ordenar(self, colecao, inicio, tamanho):
-
-        if (inicio < tamanho):
+        if (inicio < tamanho):# =
             pos = self.particionar(colecao, inicio, tamanho)
-            self.ordenar = (colecao, inicio, pos-1)
-            self.ordenar = (colecao, pos + 1, tamanho)
+            self.ordenar(colecao, inicio, (pos-1))# -1
+            self.ordenar(colecao, (pos + 1), tamanho)
         return colecao
+
 
     def particionar(self, colecao, inicio, fim):
 
         pivoEsq = colecao[inicio]['weight']
-        destPivo = inicio
-        andarColecao = inicio + 1
-
-        while (andarColecao <= fim):
-            if (int(colecao[andarColecao]['weight']) < int(pivoEsq)):
-                destPivo += 1
-                self.trocar(colecao, destPivo, andarColecao)
-            andarColecao += 1
-        self.trocar(colecao, inicio, destPivo)
-        return destPivo
+        #destPivo = inicio
+        i = inicio+1
+        f = fim
+        while (i < f):
+            if (int(colecao[i]['weight']) <= int(pivoEsq)):
+                i += 1
+            elif(int(pivoEsq) < int(colecao[f]['weight'])):
+                f -= 1
+            else:
+                self.trocar(colecao, i, f)
+                i += 1
+                f -= 1
+        colecao[inicio]['weight'] = colecao[f]['weight']
+        colecao[f]['weight'] = pivoEsq
+        #destPivo += 1
+        return f
 
     def trocar(self, colecao, n, m):
-        temp = colecao[n]['weight']
-        colecao[n]['weight'] = colecao[m]['weight']
-        colecao[m]['weight'] = temp
+        colecao[n]['weight'],colecao[m]['weight'] = colecao[m]['weight'], colecao[n]['weight']
+
+
 
 
 class MergeSort(object):
@@ -203,13 +209,10 @@ class MergeSortInsertF(object):
                 self.posMeio = (inicio + fim) // 2  # meio
                 self.ordenar(colecao, inicio, self.posMeio, L)
                 self.ordenar(colecao, self.posMeio + 1, fim, L)
-                if(inicio == 0 and fim == len(colecao)-1):#
+                if(inicio == 0 and fim == len(colecao)-1):#quando a pilha estiver toda desfeita, manda pro insert ordenar
                     InsertionSort.ordenar(self,colecao,inicio,fim)
                     self.posMeio = len(colecao)//2
-                elif(inicio == 0 and fim == len(colecao) - 1):
-                    return colecao
                 else:
-                    self.Intercalar(colecao, inicio, self.posMeio, fim)
                     return colecao
             if((fim - inicio) <= L):
                 self.posposMeio = self.posMeio
