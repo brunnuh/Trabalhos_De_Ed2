@@ -18,8 +18,8 @@ if __name__ == "__main__":
     #algoritmoDeOrdenacao = MergeSort()
     #algoritmoDeOrdenacao = InsertionSort()
     #algoritmoDeOrdenacao = QuickSortInsertionP() 0.004
-    #algoritmoDeOrdenacao = MergeSortInsertP()
-    algoritmoDeOrdenacao = HeapSort()
+    algoritmoDeOrdenacao = MergeSortInsertP()
+    #algoritmoDeOrdenacao = HeapSort()
 
     arquivoJson = '../grafos/1000vertices.json'
     arquivoDeSaida = '../arvores_geradas/Resultado.txt'

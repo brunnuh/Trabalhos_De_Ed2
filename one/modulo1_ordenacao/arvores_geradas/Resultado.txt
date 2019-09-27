@@ -521,7 +521,7 @@ fonte: 204, destino: 806, peso: 10
 fonte: 204, destino: 679, peso: 10
 fonte: 204, destino: 750, peso: 10
 fonte: 205, destino: 148, peso: 10
-fonte: 207, destino: 360, peso: 10
+fonte: 207, destino: 360, peso: 11
 fonte: 208, destino: 837, peso: 11
 fonte: 208, destino: 78, peso: 11
 fonte: 208, destino: 278, peso: 11
@@ -597,7 +597,7 @@ fonte: 248, destino: 698, peso: 12
 fonte: 249, destino: 705, peso: 12
 fonte: 250, destino: 378, peso: 12
 fonte: 250, destino: 842, peso: 12
-fonte: 250, destino: 828, peso: 12
+fonte: 250, destino: 828, peso: 13
 fonte: 251, destino: 709, peso: 13
 fonte: 252, destino: 950, peso: 13
 fonte: 254, destino: 464, peso: 13
@@ -660,7 +660,7 @@ fonte: 284, destino: 604, peso: 14
 fonte: 285, destino: 466, peso: 14
 fonte: 285, destino: 306, peso: 14
 fonte: 286, destino: 347, peso: 14
-fonte: 287, destino: 503, peso: 14
+fonte: 287, destino: 503, peso: 15
 fonte: 287, destino: 695, peso: 15
 fonte: 287, destino: 534, peso: 15
 fonte: 287, destino: 450, peso: 15
@@ -728,7 +728,7 @@ fonte: 324, destino: 907, peso: 16
 fonte: 326, destino: 610, peso: 16
 fonte: 327, destino: 746, peso: 16
 fonte: 327, destino: 415, peso: 16
-fonte: 328, destino: 220, peso: 16
+fonte: 328, destino: 220, peso: 17
 fonte: 330, destino: 569, peso: 17
 fonte: 330, destino: 522, peso: 17
 fonte: 330, destino: 959, peso: 17
@@ -761,7 +761,7 @@ fonte: 346, destino: 49, peso: 17
 fonte: 348, destino: 16, peso: 17
 fonte: 349, destino: 420, peso: 17
 fonte: 349, destino: 494, peso: 17
-fonte: 349, destino: 987, peso: 17
+fonte: 349, destino: 987, peso: 18
 fonte: 350, destino: 654, peso: 18
 fonte: 351, destino: 585, peso: 18
 fonte: 352, destino: 449, peso: 18
@@ -833,7 +833,7 @@ fonte: 425, destino: 188, peso: 21
 fonte: 425, destino: 922, peso: 21
 fonte: 426, destino: 153, peso: 21
 fonte: 426, destino: 701, peso: 21
-fonte: 429, destino: 887, peso: 21
+fonte: 429, destino: 887, peso: 22
 fonte: 429, destino: 20, peso: 22
 fonte: 429, destino: 722, peso: 22
 fonte: 434, destino: 908, peso: 22
@@ -873,7 +873,7 @@ fonte: 478, destino: 966, peso: 24
 fonte: 478, destino: 802, peso: 24
 fonte: 479, destino: 833, peso: 24
 fonte: 482, destino: 917, peso: 24
-fonte: 483, destino: 873, peso: 24
+fonte: 483, destino: 873, peso: 25
 fonte: 483, destino: 731, peso: 25
 fonte: 486, destino: 898, peso: 25
 fonte: 487, destino: 399, peso: 25
@@ -931,7 +931,7 @@ fonte: 578, destino: 821, peso: 30
 fonte: 586, destino: 360, peso: 30
 fonte: 587, destino: 636, peso: 30
 fonte: 590, destino: 672, peso: 30
-fonte: 591, destino: 913, peso: 30
+fonte: 591, destino: 913, peso: 31
 fonte: 592, destino: 88, peso: 31
 fonte: 593, destino: 946, peso: 31
 fonte: 601, destino: 533, peso: 31
