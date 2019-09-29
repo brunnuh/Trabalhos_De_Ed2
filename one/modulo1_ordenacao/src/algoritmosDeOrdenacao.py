@@ -34,21 +34,19 @@ class QuickSort(object):
         f = fim
         self.NumAtri += 3
         while (i <= f):
-            self.NumComp += 1 #comparacoes do while
+
             if (int(colecao[i]['weight']) <= int(pivoEsq)):
-                self.NumComp += 1
                 i += 1
                 self.NumAtri += 1
             elif(int(pivoEsq) <= int(colecao[f]['weight'])):
-                self.NumComp += 1
                 f -= 1
                 self.NumAtri += 1
             else:
-                self.NumComp += 1
                 self.trocar(colecao, i, f)
                 i += 1
                 f -= 1
                 self.NumAtri += 2
+            self.NumComp += 2
         colecao[inicio]['weight'] = colecao[f]['weight']
         colecao[f]['weight'] = pivoEsq
         self.NumAtri += 2
@@ -68,14 +66,18 @@ class MergeSort(object):
 
     def ordenar(self, colecao):
         self.Merg(colecao, 0, len(colecao)-1)
+        print(f'foram feitas {self.NumComp} comparacoes \nforam feitas {self.NumAtri} atribuicoes')
         return colecao
 
     def Merg(self, colecao, inicio, fim):  # v, p, r
         if (inicio < fim):
+            self.numComp += 1
             posMeio = (inicio + fim) // 2  # posicao do elemento do meio
+            self.numAtri += 1
             self.Merg(colecao, inicio, posMeio)  # dividindo a colecao pela esquerda
             self.Merg(colecao, posMeio + 1, fim)  # dividindo a colecao pela direita
             self.Intercalar(colecao, inicio, posMeio, fim)
+        self.numComp += 1
         return colecao
 
     def Intercalar(self, colecao, inicio, Meio, fim):  # v, p, q, r
@@ -83,22 +85,29 @@ class MergeSort(object):
         contEsq = inicio  # contador da colecao esquerda # i
         contDir = Meio + 1  # contador da colecao direita # j
         contCopia = inicio  # contador da copia #k
+        self.numAtri += 4
 
         while (contCopia <= fim):
+            self.numComp += 1
             if (contEsq > Meio):
                 colecao[contCopia]['weight'] = colecaoCopia[contDir]['weight']
                 contDir += 1
+                self.numAtri += 2
             elif (contDir > fim):
                 colecao[contCopia]['weight'] = colecaoCopia[contEsq]['weight']
                 contEsq += 1
+                self.numAtri += 2
             elif (int(colecaoCopia[contEsq]['weight']) < int(colecaoCopia[contDir]['weight'])):
                 colecao[contCopia]['weight'] = colecaoCopia[contEsq]['weight']
                 contEsq += 1
+                self.numAtri += 2
             else:
                 colecao[contCopia]['weight'] = colecaoCopia[contDir]['weight']
                 contDir += 1
+                self.numAtri += 4
             contCopia += 1
-
+            self.numComp += 1
+            self.numAtri += 1
 
 class InsertionSort(object):  # complexidade n^2 exponencial
     def __init__(self):
@@ -129,7 +138,6 @@ class InsertionSort(object):  # complexidade n^2 exponencial
 
 
 class MergeSortInsertP(object):# ps: testar o tempo novamente
-
     def __init__(self):
         self.posMeio = 0
         self.posposMeio = 0
@@ -188,14 +196,20 @@ class MergeSortInsertF(object):
     def __init__(self):
         self.posMeio = 0
         self.posposMeio = 0
-    def ordenar(self, colecao, inicio, fim, L):  # metodo
+
+    def ordenar(self, colecao):
+        L = int(input("Tamanho do L:"))
+        self.mergF(colecao, 0, len(colecao)-1, L)
+        return colecao
+
+    def mergF(self, colecao, inicio, fim, L):  # metodo
         if (inicio < fim):
             if ((fim - inicio) > L): # fim - inicio é o tamanho da colecao atual
                 self.posMeio = (inicio + fim) // 2  # meio
-                self.ordenar(colecao, inicio, self.posMeio, L)
-                self.ordenar(colecao, self.posMeio + 1, fim, L)
+                self.mergF(colecao, inicio, self.posMeio, L)
+                self.mergF(colecao, self.posMeio + 1, fim, L)
                 if(inicio == 0 and fim == len(colecao)-1):#quando a pilha estiver toda desfeita, manda pro insert ordenar
-                    InsertionSort.ordenar(self,colecao,inicio,fim)
+                    InsertionSort.Insert(self,colecao,inicio,fim)
                     self.posMeio = len(colecao)//2
                 else:
                     return colecao
@@ -230,9 +244,15 @@ class MergeSortInsertF(object):
 
 
 class HeapSort(object):
+    def __init__(self):
+        self.posMeio = 0
+        self.posposMeio = 0
 
+    def ordenar(self, colecao):
+        self.Heap(colecao, len(colecao)-1)
+        return colecao
 
-    def ordenar(self, colecao, n): #heapsort
+    def Heap(self, colecao, n): #heapsort
         self.buildMax(colecao, n)
         for i in range(n, 0, -1):
             colecao[0]['weight'], colecao[i]['weight'] = colecao[i]['weight'], colecao[0]['weight']
